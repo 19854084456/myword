@@ -121,10 +121,8 @@
       margin: 0 auto;
     }
   
-    .hero-image img {
-      /* margin-top: 106px; */
-      /* max-width: 80%; */
-      /* border-radius: 50%; */
+    .hero-image {
+      margin-top: 16px;
     }
   }
   
