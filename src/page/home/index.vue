@@ -5,8 +5,8 @@
           <h1>你好，我是<span>南方</span><br>web前端开发工程师</h1>
           <p>我专注于创建美观、高效、用户友好的网站与应用。拥有7年开发经验，擅长将复杂需求转化为优雅的解决方案。</p>
           <div class="btn-container">
-            <router-link to="/projectsPage" class=" btn">个人在线简历</router-link>
-            <a href="#projects" class="btn btn-outline">工作经历</a>
+            <router-link to="/projectsPage" class=" btn">在线简历查看</router-link>
+            <a href="#projects" class="btn btn-outline">个人简历下载</a>
           </div>
         </div>
         <div class="hero-image">
@@ -122,6 +122,7 @@
     }
   
     .hero-image img {
+      margin-top: 86px;
       /* max-width: 80%; */
       /* border-radius: 50%; */
     }
