@@ -122,11 +122,14 @@
     }
   
     .hero-image {
-      margin-top: 16px;
+      margin-top: 13rem;
     }
   }
   
   @media (max-width: 480px) {
+    .hero-image {
+      margin-top: 13rem;
+    }
     .hero {
       padding: 40px 0;
     }
