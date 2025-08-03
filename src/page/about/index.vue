@@ -2,7 +2,7 @@
     <!-- 关于我区域 -->
     <section class="about" id="about">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title" style="margin-bottom: 0px;">
                 <h2>个人优势</h2>
             </div>
             <div class="about-content">

@@ -14,7 +14,7 @@
               </div>
               <div class="contact-details">
                 <h4>电话</h4>
-                <a href="tel:+19854084456">+86 19854084456</a>
+                <a href="tel:+19854084456" style="color: #2563eb;">+86 19854084456 立即拨打</a>
               </div>
             </div>
   
