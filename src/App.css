@@ -37,6 +37,10 @@ body {
     color: var(--dark);
     background: linear-gradient(135deg, #f5f7fa 0%, #e4edf9 100%);
     overflow-x: hidden;
+    padding-top: 1px;
+}
+#app{
+    padding-top: 1px;
 }
 
 /* 导航栏样式 */
