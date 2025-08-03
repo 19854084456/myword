@@ -6,7 +6,7 @@
           <p>我专注于创建美观、高效、用户友好的网站与应用。拥有7年开发经验，擅长将复杂需求转化为优雅的解决方案。</p>
           <div class="btn-container">
             <router-link to="/projectsPage" class=" btn">在线简历查看</router-link>
-            <a href="#about" class="btn btn-outline">个人简历下载</a>
+            <a href="https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/webchennanfang.docx" target="_blank" class="btn btn-outline">个人简历下载</a>
           </div>
         </div>
         <div class="hero-image">
