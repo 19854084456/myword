@@ -658,7 +658,7 @@ h1 {
     padding: 15px;
     border-radius: var(--border-radius);
     background: linear-gradient(to right, #f9fafb, #f3f4f6);
-    border-left: 4px solid var(--accent);
+    /* border-left: 4px solid var(--accent); */
     position: relative;
 }
 

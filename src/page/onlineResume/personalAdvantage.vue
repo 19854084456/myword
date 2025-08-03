@@ -471,7 +471,7 @@ body {
 
 .strength-content {
     padding-left: 10px;
-    border-left: 3px solid var(--secondary);
+    /* border-left: 3px solid var(--secondary); */
 }
 
 .strength-content ul {
