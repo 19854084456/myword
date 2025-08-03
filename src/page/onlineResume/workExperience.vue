@@ -6,7 +6,7 @@
                 <div class="company-header">
                     <div class="company-name">
                         <span>深圳市潮向数字科技有限公司</span>
-                        <span>2015 - 2016</span>
+                        <span>2025.3 - 2025.8</span>
                     </div>
                     <div class="company-position">前端开发工程师</div>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="company-header">
                     <div class="company-name">
                         <span>深圳市科脉技术股份有限公司</span>
-                        <span>2016 - 2018</span>
+                        <span>2020.11 - 2024.11</span>
                     </div>
                     <div class="company-position">前端小组长</div>
                 </div>
@@ -132,7 +132,7 @@
                 <div class="company-header">
                     <div class="company-name">
                         <span>上海市铭悦软件有限公司</span>
-                        <span>2018 - 2021</span>
+                        <span>2017.3 - 2020.11</span>
                     </div>
                     <div class="company-position">前端负责人</div>
                 </div>

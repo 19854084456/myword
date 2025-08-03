@@ -61,7 +61,7 @@
 
                     <!-- 担任职责 -->
                     <h3 class="section-title"><i class="fas fa-tasks"></i> 担任职责</h3>
-                    <div class="responsibilities">
+                    <div class="responsibilities" style="padding: 0px 0px;">
                         <div class="achievement-card">
                             <div class="achievement-title"><i class="fas fa-code"></i> 前端技术负责人</div>
                             <ul class="contribution-list">
