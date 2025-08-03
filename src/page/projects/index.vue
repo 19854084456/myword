@@ -116,30 +116,30 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 // 轮播图数据
 const carousel1Slides = ref([
   {
-    src: new URL('./../../../public/imgage/2.jpg', import.meta.url).href,
+    src:'https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/dist/imgage/2.jpg',
     alt: "防城港智慧港口系统"
   },
   {
-    src: new URL('./../../../public/imgage/1.png', import.meta.url).href,
+    src:'https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/dist/imgage/1.png',
     alt: "自研前端组件库"
   },
   {
-    src: new URL('./../../../public/imgage/webseeMan.jpg', import.meta.url).href,
+    src:'https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/dist/imgage/webseeMan.jpg',
     alt: "前端监控系统搭建"
   }
 ])
 
 const carousel2Slides = ref([
   {
-    src: new URL('./../../../public/imgage/ucan2.jpg', import.meta.url).href,
+    src:'https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/dist/imgage/ucan2.jpg',
     alt: "ucan"
   },
   {
-    src: new URL('./../../../public/imgage/yunxi.jpg', import.meta.url).href,
+    src:'https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/dist/imgage/yunxi.jpg',
     alt: "yunxi"
   },
   {
-    src: new URL('./../../../public/imgage/ucan.jpg', import.meta.url).href,
+    src:'https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/dist/imgage/ucan.jpg',
     alt: "ucan"
   }
 ])
