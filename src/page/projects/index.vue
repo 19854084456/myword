@@ -26,6 +26,7 @@
           </div>
           <div class="project-content">
             <h3>深圳市潮向数字科技有限公司</h3>
+            <div class="work-period">2025.03 - 至今</div>
             <p>数字孪生企业大屏，聚焦元宇宙、AI设计等领域</p>
             <div class="project-tech">
               <span class="tag">防城港智慧港口系统</span>
@@ -48,7 +49,7 @@
                 <img src="./../../../public//imgage//keimai1.png">
               </div>
             </div>
-            <!-- <div class="carousel-nav">
+              <!-- <div class="carousel-nav">
               <div class="carousel-btn prev-btn" @click="prevSlide(0)"><i class="fas fa-chevron-left"></i></div>
               <div class="carousel-btn next-btn" @click="nextSlide(0)"><i class="fas fa-chevron-right"></i></div>
             </div> -->
@@ -59,6 +60,7 @@
           </div>
           <div class="project-content">
             <h3>深圳市科脉技术股份有限公司</h3>
+            <div class="work-period">2020.11 - 2024.11</div>
             <p>零售、餐饮业、电商等管理软件的开发商，互联网O2O技术平台及运营服务提供商</p>
             <div class="project-tech">
               <span class="tag">BOSS数字化运营平台（中台管理系统）</span>
@@ -92,6 +94,7 @@
           </div>
           <div class="project-content">
             <h3>上海市铭悦软件有限公司</h3>
+            <div class="work-period">2017.03 - 2020.11</div>
             <p>钉钉集成商、阿里巴巴会务系统合作商</p>
             <div class="project-tech">
               <span class="tag">悦门户，悦平台（钉钉企业零代码建站平台）</span>
@@ -423,5 +426,11 @@ onBeforeUnmount(() => {
 .section-title p {
   color: #666;
   font-size: 1.1rem;
+}
+.work-period {
+  color: #007bff;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 1rem;
 }
 </style>
