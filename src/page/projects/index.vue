@@ -131,7 +131,7 @@ const carousel1Slides = ref([
 
 const carousel2Slides = ref([
   {
-    src: "./../../../public/imgage/ucan2.jpg",
+    src: require("./../../../public//imgage//keimai1.png"),
     alt: "ucan"
   },
   {
