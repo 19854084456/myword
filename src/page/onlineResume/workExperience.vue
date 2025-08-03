@@ -15,10 +15,10 @@
                     
                     <h3 class="section-title"><i class="fas fa-laptop-code"></i> 核心技术</h3>
                     <div class="tech-stack">
-                        <div class="tech-item">Vue3</div>
-                        <div class="tech-item">React</div>
-                        <div class="tech-item">WebSocket</div>
-                        <div class="tech-item">NestJS</div>
+                        <div class="tag">Vue3</div>
+                        <div class="tag">React</div>
+                        <div class="tag">WebSocket</div>
+                        <div class="tag">NestJS</div>
                     </div>
                     
                     <h3 class="section-title"><i class="fas fa-project-diagram"></i> 核心项目</h3>
@@ -80,10 +80,10 @@
                     
                     <h3 class="section-title"><i class="fas fa-laptop-code"></i> 核心技术</h3>
                     <div class="tech-stack">
-                        <div class="tech-item">Vue.js</div>
-                        <div class="tech-item">微信小程序</div>
-                        <div class="tech-item">UniApp</div>
-                        <div class="tech-item">Element UI</div>
+                        <div class="tag">Vue.js</div>
+                        <div class="tag">微信小程序</div>
+                        <div class="tag">UniApp</div>
+                        <div class="tag">Element UI</div>
                     </div>
                     
                     <h3 class="section-title"><i class="fas fa-project-diagram"></i> 核心项目</h3>
@@ -141,11 +141,11 @@
                     
                     <h3 class="section-title"><i class="fas fa-laptop-code"></i> 核心技术</h3>
                     <div class="tech-stack">
-                        <div class="tech-item">React</div>
-                        <div class="tech-item">Ant Design</div>
-                        <div class="tech-item">TypeScript</div>
-                        <div class="tech-item">钉钉API</div>
-                        <div class="tech-item">ECharts</div>
+                        <div class="tag">React</div>
+                        <div class="tag">Ant Design</div>
+                        <div class="tag">TypeScript</div>
+                        <div class="tag">钉钉API</div>
+                        <div class="tag">ECharts</div>
                     </div>
                     
                     <h3 class="section-title"><i class="fas fa-project-diagram"></i> 核心项目</h3>

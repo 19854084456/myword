@@ -82,17 +82,17 @@
                         </ul>
 
                         <div class="tech-tags">
-                            <span class="tech-tag">Vue2/3</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Element UI</span>
-                            <span class="tech-tag">Ant Design</span>
-                            <span class="tech-tag">Vuex/Pinia</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Webpack/Vite</span>
-                            <span class="tech-tag">NestJS</span>
-                            <span class="tech-tag">Mongoose</span>
-                            <span class="tech-tag">Uni-app</span>
-                            <span class="tech-tag">ECharts</span>
+                            <span class="tag">Vue2/3</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Element UI</span>
+                            <span class="tag">Ant Design</span>
+                            <span class="tag">Vuex/Pinia</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Webpack/Vite</span>
+                            <span class="tag">NestJS</span>
+                            <span class="tag">Mongoose</span>
+                            <span class="tag">Uni-app</span>
+                            <span class="tag">ECharts</span>
                         </div>
                     </div>
                 </div>
@@ -516,11 +516,12 @@ body {
     border-top: 1px dashed var(--border);
 }
 
-.tech-tag {
-    background: var(--primary);
-    color: white;
+.tag {
+    /* background: var(--primary); */
+    /* color: white; */
     padding: 6px 15px;
     border-radius: 30px;
+    width: auto!important;
     font-size: 0.9rem;
 }
 
