@@ -39,6 +39,9 @@ body {
     overflow-x: hidden;
     padding-top: 1px;
 }
+html {
+    font-size: 12px!important; 
+}
 #app{
     padding-top: 1px;
 }
@@ -753,7 +756,7 @@ footer {
         right: auto;
         top: auto;
         transform: none;
-        width: 70%;
+        width: 60%;
         margin: 2rem auto 0;
         animation: none;
     }
@@ -792,7 +795,7 @@ footer {
     }
     
     .hero-image {
-        width: 90%;
+        width: 70%;
     }
     
     .projects-grid {
