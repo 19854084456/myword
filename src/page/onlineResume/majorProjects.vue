@@ -300,7 +300,7 @@ h1 {
     border-radius: var(--border-radius);
     padding: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border-left: 4px solid var(--accent);
+    /* border-left: 4px solid var(--accent); */
 }
 
 .card-title {
@@ -352,7 +352,7 @@ h1 {
     padding: 25px;
     margin: 20px 0;
     box-shadow: var(--shadow);
-    border-left: 4px solid var(--accent);
+    /* border-left: 4px solid var(--accent); */
 }
 
 .achievement-title {
