@@ -49,5 +49,5 @@ onBeforeUnmount(() => {
     <About></About>
     <Project></Project>
     <Contact></Contact>
-    <Footer></Footer>
+    <Footer @navigate="handleNavigate"></Footer>
 </template>
