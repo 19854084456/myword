@@ -340,17 +340,17 @@ export default {
         description: '智慧港口大屏可视化系统，实现车辆、人员、场地数据的实时监控与可视化分析。',
         items: [
           {
-            image: "./.https://www.chennanfang.fun/assets/2.jpg",
+            image: new URL('./../../../public/imgage/2.jpg', import.meta.url).href,
             title: '实时监控',
             description: '港口运营状态实时监控'
           },
           {
-            image: "./.https://www.chennanfang.fun/assets/5.png",
+            image: new URL('./../../../public/imgage/5.png', import.meta.url).href,
             title: '数据分析',
             description: '港口运营数据深度分析'
           },
           {
-            image: "https://www.chennanfang.fun/assets/10.png",
+            image: new URL('./../../../public/imgage/10.png', import.meta.url).href,
             title: '可视化展示',
             description: '3D港口可视化展示'
           }
@@ -362,17 +362,18 @@ export default {
         description: '- 前端异常监控与报错定位\n- 用户行为录屏与分析\n- 自定义监控数据看板',
         items: [
           {
-            image: "https://www.chennanfang.fun/assets/cx1.png",
+            image: new URL('./../../../public/imgage/cx1.png', import.meta.url).href,
             title: '异常监控',
             description: '前端异常实时监控'
           },
           {
-            image: "https://www.chennanfang.fun/assets/webSee.jpg",
+            image: "./../../../public/imgage/",
+            image: new URL('./../../../public/imgage/webSee.jpg', import.meta.url).href,
             title: '行为分析',
             description: '用户行为录屏分析'
           },
           {
-            image: "https://www.chennanfang.fun/assets/webseeMan.jpg",
+            image: new URL('./../../../public/webseeMan.jpg', import.meta.url).href,
             title: '数据看板',
             description: '自定义监控数据看板'
           }

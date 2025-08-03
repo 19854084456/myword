@@ -116,30 +116,30 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 // 轮播图数据
 const carousel1Slides = ref([
   {
-    src: "https://www.chennanfang.fun/assets/2.jpg",
+    src: new URL('./../../../public/imgage/2.jpg', import.meta.url).href,
     alt: "防城港智慧港口系统"
   },
   {
-    src: "https://www.chennanfang.fun/assets/1.png",
+    src: new URL('./../../../public/imgage/1.png', import.meta.url).href,
     alt: "自研前端组件库"
   },
   {
-    src: "https://www.chennanfang.fun/assets/webseeMan.jpg",
+    src: new URL('./../../../public/imgage/webseeMan.jpg', import.meta.url).href,
     alt: "前端监控系统搭建"
   }
 ])
 
 const carousel2Slides = ref([
   {
-    src: "https://www.chennanfang.fun/assets/ucan2.jpg",
+    src: new URL('./../../../public/imgage/ucan2.jpg', import.meta.url).href,
     alt: "ucan"
   },
   {
-    src: "https://www.chennanfang.fun/assets/yunxi.jpg",
+    src: new URL('./../../../public/imgage/yunxi.jpg', import.meta.url).href,
     alt: "yunxi"
   },
   {
-    src: "https://www.chennanfang.fun/assets/ucan.jpg",
+    src: new URL('./../../../public/imgage/ucan.jpg', import.meta.url).href,
     alt: "ucan"
   }
 ])

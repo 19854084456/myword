@@ -4,7 +4,7 @@
         <div class="header">
             <div class="header-content">
                 <div class="avatar-container">
-                    <img src="https://www.chennanfang.fun/assets/WechatIMG23.jpg" alt="陈南方" class="avatar">
+                    <img src="./../../../public/imgage/WechatIMG23.jpg" alt="陈南方" class="avatar">
                 </div>
                 <div class="header-info">
                     <h1 class="name">陈南方</h1>

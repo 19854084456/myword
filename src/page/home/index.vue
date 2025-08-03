@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="https://www.chennanfang.fun/assetsnanfang.jpg" alt="南方">
+          <img src="./../../../public/imgage/nanfang.jpg" alt="南方">
         </div>
       </div>
     </section>
