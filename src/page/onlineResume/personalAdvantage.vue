@@ -451,8 +451,8 @@ body {
 }
 
 .strength-icon {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background: var(--primary);
     border-radius: 50%;
     display: flex;
