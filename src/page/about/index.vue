@@ -7,7 +7,7 @@
             </div>
             <div class="about-content">
                 <!-- <div class="about-image">
-                    <img src="./../../../public/imgage/WechatIMG23.jpg" alt="南方">
+                    <img src="https://www.chennanfang.fun/assetsWechatIMG23.jpg" alt="南方">
                 </div> -->
                 <div class="about-text">
                     <!-- <h3>web前端开发工程师 & 全栈</h3>

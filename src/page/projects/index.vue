@@ -116,15 +116,15 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 // 轮播图数据
 const carousel1Slides = ref([
   {
-    src: "./../../../public/imgage/2.jpg",
+    src: "https://www.chennanfang.fun/assets/2.jpg",
     alt: "防城港智慧港口系统"
   },
   {
-    src: "./../../../public/imgage/1.png",
+    src: "https://www.chennanfang.fun/assets/1.png",
     alt: "自研前端组件库"
   },
   {
-    src: "./../../../public/imgage/webseeMan.jpg",
+    src: "https://www.chennanfang.fun/assets/webseeMan.jpg",
     alt: "前端监控系统搭建"
   }
 ])
@@ -135,11 +135,11 @@ const carousel2Slides = ref([
     alt: "ucan"
   },
   {
-    src: "./../../../public/imgage/yunxi.jpg",
+    src: "https://www.chennanfang.fun/assets/yunxi.jpg",
     alt: "yunxi"
   },
   {
-    src: "./../../../public/imgage/ucan.jpg",
+    src: "https://www.chennanfang.fun/assets/ucan.jpg",
     alt: "ucan"
   }
 ])

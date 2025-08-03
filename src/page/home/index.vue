@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="./../../../public/imgage/nanfang.jpg" alt="南方">
+          <img src="https://www.chennanfang.fun/assetsnanfang.jpg" alt="南方">
         </div>
       </div>
     </section>
@@ -122,7 +122,7 @@
     }
   
     .hero-image img {
-      margin-top: 86px;
+      margin-top: 106px;
       /* max-width: 80%; */
       /* border-radius: 50%; */
     }

@@ -31,7 +31,7 @@
             <div class="wechat-container">
               <h4>微信联系</h4>
               <div class="wechat-qrcode">
-                <img src="./../../../public/imgage/WechatIMG129.jpg" alt="微信二维码" class="qrcode-img">
+                <img src="https://www.chennanfang.fun/assetsWechatIMG129.jpg" alt="微信二维码" class="qrcode-img">
                 <p class="wechat-text">扫码添加微信</p>
               </div>
             </div>
