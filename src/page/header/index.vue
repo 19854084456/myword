@@ -1,6 +1,6 @@
 <template>
   <!-- 导航栏 -->
-  <header ref="headerRef">
+  <header ref="headerRef" style="position: fixed; top: 0; left: 0; right: 0;">
     <div class="container">
       <nav>
         <a href="#" class="logo">陈南方</a>
