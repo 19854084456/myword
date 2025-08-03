@@ -29,8 +29,8 @@
             <p>数字孪生企业大屏，聚焦元宇宙、AI设计等领域</p>
             <div class="project-tech">
               <span class="tag">防城港智慧港口系统</span>
-              <span class="tag">自研前端组件库</span>
-              <span class="tag">前端监控系统搭建</span>
+              <span class="tag">自研前端组件库与技术规范</span>
+              <span class="tag">前端监控系统设计与搭建</span>
             </div>
             <div class="project-links">
               <router-link to="/projectsPage?projectsType=1">
