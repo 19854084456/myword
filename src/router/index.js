@@ -24,5 +24,12 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+router.afterEach((to) => {
+  if (typeof _hmt !== "undefined") {
+    _hmt.push(["_trackPageview", to.fullPath]); // 发送新页面路径
+  }
+  console.log(_hmt)
+
+});
 
 export default router
