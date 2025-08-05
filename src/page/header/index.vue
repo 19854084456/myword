@@ -9,6 +9,7 @@
           <li><a @click="handleNavClick('about')">个人优势</a></li>
           <li><a @click="handleNavClick('projects')">工作经历</a></li>
           <li><a @click="handleNavClick('contact')">联系我</a></li>
+          <li><a @click="handleNavClick('ai-chat')">智能AI</a></li>
         </ul>
         <div class="hamburger" @click="toggleMenu">
           <i class="fas fa-bars"></i>

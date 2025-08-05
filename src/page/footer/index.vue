@@ -9,6 +9,7 @@
                     <li><a @click="handleNavClick('about')">个人优势</a></li>
                     <li><a @click="handleNavClick('projects')">工作经历</a></li>
                     <li><a @click="handleNavClick('contact')">联系我</a></li>
+                    <li><a @click="handleNavClick('ai-chat')">智能AI</a></li>
                 </ul>
                 <p class="copyright">© 2025 南方个人简历. 保留所有权利</p>
             </div>

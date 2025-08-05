@@ -6,6 +6,7 @@ import About from './about/index.vue';
 import Project from './projects/index.vue';
 import Contact from './contact/index.vue';
 import Footer from './footer/index.vue';
+import AIChat from './aiChat/index.vue';
 import { onMounted, onBeforeUnmount, ref } from 'vue';
 
 const activeSection = ref('hero');
@@ -22,7 +23,7 @@ const handleNavigate = (target) => {
   }
 }
 const handleScroll = () => {
-  const sections = ['hero', 'about', 'projects', 'contact'];
+  const sections = ['hero', 'about', 'projects', 'contact', 'ai-chat']; // 添加 ai-chat
   const scrollPosition = window.scrollY + 200; // 提前激活阈值
 
   for (let i = sections.length - 1; i >= 0; i--) {
@@ -49,5 +50,6 @@ onBeforeUnmount(() => {
     <About></About>
     <Project></Project>
     <Contact></Contact>
+    <AIChat></AIChat>
     <Footer @navigate="handleNavigate"></Footer>
 </template>
