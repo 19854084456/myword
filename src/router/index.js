@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeLayout from './../page/homeLayout.vue'
 import ProjectsPage from './../page/onlineResume/personalAdvantage.vue'
 import SmartNotes from './../page/smartNotes/index.vue'
-
+import AgentCreator from './../page/aiAgent/agentCreator.vue'
 const routes = [
   {
     path: '/',
@@ -34,6 +34,14 @@ const routes = [
     component: SmartNotes,
     meta: {
       title: '智慧笔记'
+    }
+  },
+  {
+    path: '/agentCreator',
+    name: 'agentCreator',
+    component: AgentCreator,
+    meta: {
+      title: '智能助手'
     }
   }
 ]
