@@ -10,6 +10,7 @@
           <li><a @click="handleNavClick('projects')">工作经历</a></li>
           <li><a @click="handleNavClick('contact')">联系我</a></li>
           <li><a @click="handleNavClick('ai-chat')">智能AI客服</a></li>
+          <li><a @click="goToAgentCreator()">AI智能体</a></li>
         </ul>
         <div class="hamburger" @click="toggleMenu">
           <i class="fas fa-bars"></i>
@@ -21,8 +22,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 const emit = defineEmits(['navigate'])
 
+const router = useRouter()
+
+const goToAgentCreator = () => {
+  isMenuActive.value = false
+  router.push('/agentCreator') // 根据实际路由路径调整
+}
 // 响应式数据
 const isMenuActive = ref(false)
 
