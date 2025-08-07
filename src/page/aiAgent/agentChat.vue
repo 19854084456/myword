@@ -17,11 +17,7 @@
     </div>
 
     <div class="chat-messages" ref="messagesContainer">
-      <div 
-        v-for="message in messages" 
-        :key="message.id"
-        :class="['message', message.sender]"
-      >
+      <div v-for="message in messages" :key="message.id" :class="['message', message.sender]">
         <div class="message-content">
           <div class="message-sender">
             {{ message.sender === 'user' ? '您' : agent.name }}
@@ -47,17 +43,8 @@
     </div>
 
     <div class="chat-input-area">
-      <textarea
-        v-model="userInput"
-        placeholder="输入消息..."
-        @keydown.enter="sendMessage"
-        :disabled="isTyping"
-      ></textarea>
-      <button 
-        @click="sendMessage"
-        :disabled="!userInput.trim() || isTyping"
-        class="send-button"
-      >
+      <textarea v-model="userInput" placeholder="输入消息..." @keydown.enter="sendMessage" :disabled="isTyping"></textarea>
+      <button @click="sendMessage" :disabled="!userInput.trim() || isTyping" class="send-button">
         发送
       </button>
     </div>
@@ -75,14 +62,8 @@ export default {
   },
   data() {
     return {
-      messages: [
-        {
-          id: 1,
-          sender: 'agent',
-          text: `您好！我是${this.agent.name}，很高兴为您服务。有什么我可以帮助您的吗？`,
-          timestamp: new Date()
-        }
-      ],
+      agent: JSON.parse(localStorage.getItem('agent')) || this.agent,
+      messages: [],
       userInput: '',
       isTyping: false,
       messageCounter: 2
@@ -92,11 +73,11 @@ export default {
     sendMessage(event) {
       // 防止换行
       if (event.shiftKey) return;
-      
+
       event.preventDefault();
-      
+
       if (!this.userInput.trim() || this.isTyping) return;
-      
+
       // 添加用户消息
       const userMessage = {
         id: this.messageCounter++,
@@ -104,27 +85,27 @@ export default {
         text: this.userInput,
         timestamp: new Date()
       };
-      
+
       this.messages.push(userMessage);
       this.userInput = '';
       this.isTyping = true;
-      
+
       // 滚动到底部
       this.$nextTick(() => {
         this.scrollToBottom();
       });
-      
+
       // 模拟智能体回复
       this.simulateAgentResponse();
     },
-    
+
     simulateAgentResponse() {
       // 模拟智能体思考时间
       const delay = 1000 + Math.random() * 2000;
-      
+
       setTimeout(() => {
         let responseText = '';
-        
+
         // 根据智能体能力生成不同回复
         switch (this.agent.capabilities) {
           case 'tech':
@@ -139,47 +120,53 @@ export default {
           default:
             responseText = '感谢您的消息！作为您的智能助手，我会尽力帮助您解决问题。请问您还有其他需要咨询的吗？';
         }
-        
+
         const agentMessage = {
           id: this.messageCounter++,
           sender: 'agent',
           text: responseText,
           timestamp: new Date()
         };
-        
+
         this.isTyping = false;
         this.messages.push(agentMessage);
-        
+
         // 滚动到底部
         this.$nextTick(() => {
           this.scrollToBottom();
         });
       }, delay);
     },
-    
+
     formatTime(timestamp) {
       return timestamp.toLocaleTimeString('zh-CN', {
         hour: '2-digit',
         minute: '2-digit'
       });
     },
-    
+
     scrollToBottom() {
       const container = this.$refs.messagesContainer;
       if (container) {
         container.scrollTop = container.scrollHeight;
       }
     },
-    
+
     goBack() {
       this.$emit('back');
     }
   },
-  
+
   mounted() {
     this.scrollToBottom();
+    this.messages[0] = {
+      id: 1,
+      sender: 'agent',
+      text: `您好！我是${this.agent.name}，很高兴为您服务。有什么我可以帮助您的吗？`,
+      timestamp: new Date()
+    };
   },
-  
+
   watch: {
     messages() {
       this.$nextTick(() => {
@@ -389,6 +376,7 @@ export default {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -396,10 +384,14 @@ export default {
 }
 
 @keyframes typing {
-  0%, 80%, 100% {
+
+  0%,
+  80%,
+  100% {
     transform: scale(0.8);
     opacity: 0.5;
   }
+
   40% {
     transform: scale(1);
     opacity: 1;
@@ -410,23 +402,23 @@ export default {
   .chat-header {
     padding: 1rem;
   }
-  
+
   .agent-details h2 {
     font-size: 1.1rem;
   }
-  
+
   .agent-details p {
     font-size: 0.8rem;
   }
-  
+
   .chat-messages {
     padding: 1rem;
   }
-  
+
   .message {
     max-width: 90%;
   }
-  
+
   .chat-input-area {
     padding: 0.8rem;
   }
