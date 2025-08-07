@@ -1,20 +1,22 @@
 <!-- CustomSelect.vue -->
 <template>
-  <div class="custom-select" @click="toggleDropdown" ref="selectContainer">
-    <div class="select-trigger">
+  <div class="custom-select" ref="selectContainer">
+    <div class="select-trigger" @click="toggleDropdown">
       <span>{{ selectedLabel || placeholder }}</span>
       <i class="arrow" :class="{ open: showDropdown }"></i>
     </div>
-    <ul class="select-dropdown" v-show="showDropdown">
-      <li 
-        v-for="option in options" 
-        :key="option.value"
-        @click="selectOption(option)"
-        :class="{ selected: modelValue === option.value }"
-      >
-        {{ option.label }}
-      </li>
-    </ul>
+    <transition name="slide-fade">
+      <ul class="select-dropdown" v-show="showDropdown">
+        <li 
+          v-for="option in options" 
+          :key="option.value"
+          @click="selectOption(option)"
+          :class="{ selected: modelValue === option.value }"
+        >
+          {{ option.label }}
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -127,6 +129,21 @@ export default {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* 滑动淡入淡出动画 */
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
 }
 
 .select-dropdown li {
