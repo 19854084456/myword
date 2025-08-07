@@ -4,7 +4,9 @@
     <div class="chat-header">
       <div class="agent-info">
         <div class="agent-avatar">
-          <span>{{ agent.name.charAt(0) }}</span>
+          <!-- 修改：将文字头像改为图片头像 -->
+          <img v-if="agent.avatar" :src="agent.avatar" :alt="agent.name" class="agent-avatar-img">
+          <span v-else>{{ agent.name.charAt(0) }}</span>
         </div>
         <div class="agent-details">
           <h2>{{ agent.name }}</h2>
@@ -54,15 +56,12 @@
 <script>
 export default {
   name: 'AgentChat',
-  props: {
-    agent: {
-      type: Object,
-      required: true
-    }
-  },
   data() {
     return {
-      agent: JSON.parse(localStorage.getItem('agent')) || this.agent,
+      agent: {
+        avatar: 'https://q5.itc.cn/q_70/images03/20250226/e9bb1f7c545648d7895c499eed79c085.gif',
+        ...JSON.parse(localStorage.getItem('agent'))
+      },
       messages: [],
       userInput: '',
       isTyping: false,
@@ -213,6 +212,14 @@ export default {
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+/* 新增：头像图片样式 */
+.agent-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .agent-details h2 {
@@ -411,14 +418,14 @@ export default {
     font-size: 0.8rem;
   }
 
-  .chat-messages {
+  .chat-messages{
     padding: 1rem;
   }
-
+  
   .message {
     max-width: 90%;
   }
-
+  
   .chat-input-area {
     padding: 0.8rem;
   }
