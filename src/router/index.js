@@ -3,6 +3,7 @@ import HomeLayout from './../page/homeLayout.vue'
 import ProjectsPage from './../page/onlineResume/personalAdvantage.vue'
 import SmartNotes from './../page/smartNotes/index.vue'
 import AgentCreator from './../page/aiAgent/agentCreator.vue'
+import AgentChat from './../page/aiAgent/agentChat.vue'
 const routes = [
   {
     path: '/',
@@ -43,7 +44,15 @@ const routes = [
     meta: {
       title: '智能助手'
     }
-  }
+  },
+  {
+    path: '/agentChat',
+    name: 'agentChat',
+    component: AgentChat,
+    meta: {
+      title: '智能助手'
+    }
+  },
 ]
 
 const router = createRouter({
