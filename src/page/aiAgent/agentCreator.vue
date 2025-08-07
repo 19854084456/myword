@@ -46,12 +46,12 @@
               
               <div class="form-group">
                 <label for="agentCapabilities">能力配置</label>
-                <select id="agentCapabilities" v-model="agentConfig.capabilities">
-                  <option value="general">通用助手</option>
-                  <option value="tech">技术支持</option>
-                  <option value="creative">创意写作</option>
-                  <option value="analysis">数据分析</option>
-                </select>
+                <CustomSelect 
+                  id="agentCapabilities"
+                  v-model="agentConfig.capabilities"
+                  :options="capabilities"
+                  placeholder="请选择能力配置"
+                />
               </div>
               
               <div class="form-actions">
@@ -68,7 +68,7 @@
             <h3>{{ createdAgent.name }}</h3>
             <p>{{ createdAgent.description }}</p>
             <div class="agent-details">
-              <span class="capability">能力: {{ createdAgent.capabilities }}</span>
+              <span class="capability">能力: {{ getCapabilityLabel(createdAgent.capabilities) }}</span>
               <span class="status">状态: {{ createdAgent.status }}</span>
             </div>
           </div>
@@ -79,8 +79,13 @@
   </template>
   
   <script>
+  import CustomSelect from '@/component/customSelect.vue';
+  
   export default {
     name: 'AgentCreator',
+    components: {
+      CustomSelect
+    },
     data() {
       return {
         showCustomForm: false,
@@ -91,6 +96,12 @@
           capabilities: 'general'
         },
         createdAgent: null,
+        capabilities: [
+          { value: 'general', label: '通用助手' },
+          { value: 'tech', label: '技术支持' },
+          { value: 'creative', label: '创意写作' },
+          { value: 'analysis', label: '数据分析' }
+        ],
         defaultAgent: {
           name: '示例智能助手',
           description: '这是一个通用型智能助手示例，可以帮助您了解智能体的基本功能和交互方式。',
@@ -131,6 +142,10 @@
         this.agentCreated = false;
         this.createdAgent = null;
         this.cancelCustom();
+      },
+      getCapabilityLabel(value) {
+        const capability = this.capabilities.find(cap => cap.value === value);
+        return capability ? capability.label : '';
       }
     }
   }
@@ -251,8 +266,7 @@
   }
   
   .form-group input,
-  .form-group textarea,
-  .form-group select {
+  .form-group textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ddd;
