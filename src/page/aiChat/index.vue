@@ -2,7 +2,7 @@
 <template>
   <section id="ai-chat" class="ai-chat-section">
     <div class="container">
-      <h2 class="section-title">智能AI助手</h2>
+      <h2 class="section-title">智能AI客服</h2>
       <div class="chat-container">
         <div class="chat-messages" ref="messagesContainer">
           <div 
@@ -36,7 +36,7 @@ import { ref, nextTick } from 'vue';
 import { createAssessment} from '@/api/openAi';
 
 const messages = ref([
-  { role: 'assistant', content: '您好！我是南方智能AI助手，有什么我可以帮您的吗？' },
+  { role: 'assistant', content: '您好！我是南方智能AI客服，有什么我可以帮您的吗？' },
   { role: 'assistant', content: '您可以对我进行提问，了解我简历个人信息' }
 ]);
 
@@ -88,7 +88,7 @@ const simulateAIResponse = (message) => {
         `感谢您的提问："${message}"。作为AI助手，我可以提供各种信息和帮助。请告诉我更多细节，以便我更好地为您服务。`,
         `关于"${message}"，这是一个很有趣的问题。我可以为您提供相关信息，但需要您提供更多背景或具体需求。`,
         `我已经收到您的消息："${message}"。我会尽力为您提供帮助，请稍等我整理相关信息。`,
-        `您好！针对"${message}"这个问题，我可以为您提供以下帮助：作为智能AI助手，我的功能包括回答问题、提供建议、协助处理信息等。`
+        `您好！针对"${message}"这个问题，我可以为您提供以下帮助：作为智能AI客服，我的功能包括回答问题、提供建议、协助处理信息等。`
       ];
       resolve(responses[Math.floor(Math.random() * responses.length)]);
     }, 1000 + Math.random() * 2000);
