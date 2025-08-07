@@ -41,6 +41,7 @@
                   v-model="agentConfig.description" 
                   placeholder="描述您的智能体功能"
                   rows="3"
+                  required
                 ></textarea>
               </div>
               
