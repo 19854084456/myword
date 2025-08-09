@@ -62,7 +62,21 @@ const messagesContainer = ref(null);
 const formatTime = (time) => {
   if (!time) return '';
   const date = new Date(time);
-  return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+  const now = new Date();
+  
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  
+  // 如果是今天，只显示时间
+  // if (date.toDateString() === now.toDateString()) {
+  //   return `${hours}:${minutes}`;
+  // } else {
+    // 如果是其他日期，显示完整日期和时间
+    return `${month}-${day} ${hours}:${minutes}`;
+  // }
 };
 
 const scrollToBottom = () => {
