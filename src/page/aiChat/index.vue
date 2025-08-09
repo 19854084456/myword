@@ -34,7 +34,7 @@
         <div class="chat-input-container">
           <input v-model="userInput" @keyup.enter="sendMessage" placeholder="请输入您的问题..." :disabled="isLoading" />
           <button @click="sendMessage" :disabled="isLoading || !userInput.trim()">
-            {{ isLoading ? 'AI思考中...' : '发送' }}
+            {{ isLoading ? 'AI思考中...' : '发送' }}{{ count }}
           </button>
         </div>
       </div>
@@ -57,25 +57,26 @@ const messages = ref([
 const userInput = ref('');
 const isLoading = ref(false);
 const messagesContainer = ref(null);
+const count = ref(0) // 开始连接次数
 
 // 格式化时间
 const formatTime = (time) => {
   if (!time) return '';
   const date = new Date(time);
   const now = new Date();
-  
+
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const day = date.getDate().toString().padStart(2, '0');
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
-  
+
   // 如果是今天，只显示时间
   // if (date.toDateString() === now.toDateString()) {
   //   return `${hours}:${minutes}`;
   // } else {
-    // 如果是其他日期，显示完整日期和时间
-    return `${month}-${day} ${hours}:${minutes}`;
+  // 如果是其他日期，显示完整日期和时间
+  return `${month}-${day} ${hours}:${minutes}`;
   // }
 };
 
@@ -88,40 +89,58 @@ const scrollToBottom = () => {
 };
 
 const sendMessage = async () => {
-  if (!userInput.value.trim() || isLoading.value) return;
+  console.log("发送消息", count.value)
+  if ((!userInput.value.trim() || isLoading.value) && !count.value) return;
+  console.log("开始连接")
+  if (!count.value) {
+    // 添加用户消息
+    const userMessage = {
+      role: 'user',
+      content: userInput.value,
+      time: new Date()
+    };
+    messages.value.push(userMessage);
+    scrollToBottom();
+  }
 
-  // 添加用户消息
-  const userMessage = {
-    role: 'user',
-    content: userInput.value,
-    time: new Date()
-  };
-  messages.value.push(userMessage);
-  
   const userMessageContent = userInput.value;
-  userInput.value = '';
+ 
   isLoading.value = true;
 
-  scrollToBottom();
+  
 
   try {
     console.log(userMessageContent);
     const response = await createAssessment({ question: userMessageContent });
     console.log(response);
+    userInput.value = '';
     messages.value.push({
       role: 'assistant',
       content: response.data,
       time: new Date()
     });
-  } catch (error) {
-    messages.value.push({
-      role: 'assistant',
-      content: 'AI部署中，请稍后重新提问',
-      time: new Date()
-    });
-  } finally {
-    isLoading.value = false;
+    count.value=0
     scrollToBottom();
+    isLoading.value = false;
+  } catch (error) {
+    count.value++;
+    setTimeout(() => {
+      if (count.value < 10) {
+        sendMessage();
+      } else {
+        messages.value.push({
+          role: 'assistant',
+          content: 'AI部署中，请稍后重新提问',
+          time: new Date()
+        });
+        count.value = 0;
+        isLoading.value = false
+         scrollToBottom();
+      }
+    }, 1000);
+  } finally {
+    // isLoading.value = false;
+    // scrollToBottom();
   }
 };
 </script>
