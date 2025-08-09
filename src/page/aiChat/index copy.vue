@@ -57,25 +57,28 @@ const messages = ref([
 const userInput = ref('');
 const isLoading = ref(false);
 const messagesContainer = ref(null);
+const retryCount = ref(0);
+const maxRetries = 30;// // 最大重试次数
+const isPush = ref(false);
 
 // 格式化时间
 const formatTime = (time) => {
   if (!time) return '';
   const date = new Date(time);
   const now = new Date();
-  
+
   const year = date.getFullYear();
   const month = (date.getMonth() + 1).toString().padStart(2, '0');
   const day = date.getDate().toString().padStart(2, '0');
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
-  
+
   // 如果是今天，只显示时间
   // if (date.toDateString() === now.toDateString()) {
   //   return `${hours}:${minutes}`;
   // } else {
-    // 如果是其他日期，显示完整日期和时间
-    return `${month}-${day} ${hours}:${minutes}`;
+  // 如果是其他日期，显示完整日期和时间
+  return `${month}-${day} ${hours}:${minutes}`;
   // }
 };
 
@@ -87,20 +90,25 @@ const scrollToBottom = () => {
   });
 };
 
+// 添加重试机制的 sendMessage 函数
 const sendMessage = async () => {
-  if (!userInput.value.trim() || isLoading.value) return;
+  console.log('xxxxxxxxxxxxx')
 
-  // 添加用户消息
-  const userMessage = {
-    role: 'user',
-    content: userInput.value,
-    time: new Date()
-  };
-  messages.value.push(userMessage);
-  
+  // if (!userInput.value.trim() || isLoading.value) return;
+  console.log('aaaaaaaaaaa')
+  if (!isPush.value) {
+    // 添加用户消息
+    isLoading.value = true;
+    const userMessage = {
+      role: 'user',
+      content: userInput.value,
+      time: new Date()
+    };
+    messages.value.push(userMessage);
+    isPush.value = true;
+  }
+
   const userMessageContent = userInput.value;
-  userInput.value = '';
-  isLoading.value = true;
 
   scrollToBottom();
 
@@ -108,20 +116,42 @@ const sendMessage = async () => {
     console.log(userMessageContent);
     const response = await createAssessment({ question: userMessageContent });
     console.log(response);
-    messages.value.push({
-      role: 'assistant',
-      content: response.data,
-      time: new Date()
-    });
+    isPush.value = false;
+
+    // 检查响应是否成功
+    if (response && response.data) {
+      userInput.value = '';
+      retryCount = 0;
+      messages.value.push({
+        role: 'assistant',
+        content: response.data,
+        time: new Date()
+      });
+    } else {
+      throw new Error('Invalid response');
+    }
   } catch (error) {
+    console.log(retryCount.value, 'aa', maxRetries)
+    // 如果还有重试次数，则递归调用
+    if (retryCount.value < maxRetries) {
+      console.log(`请求失败，正在进行第 ${retryCount.value + 1} 次重试...`);
+      setTimeout(() => {
+        sendMessage();
+        retryCount.value++
+        console.log(1000 * (retryCount.value + 1))
+      }, 1000); // 递增延迟重试
+      return; // 提前返回，避免执行 finally 块
+    }
+
+    // 超过最大重试次数后显示错误信息
     messages.value.push({
       role: 'assistant',
       content: 'AI部署中，请稍后重新提问',
       time: new Date()
     });
   } finally {
-    isLoading.value = false;
-    scrollToBottom();
+    // isLoading.value = false;
+    // scrollToBottom();
   }
 };
 </script>
