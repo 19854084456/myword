@@ -69,7 +69,7 @@ const formatTime = (time) => {
   const day = date.getDate().toString().padStart(2, '0');
   const hours = date.getHours().toString().padStart(2, '0');
   const minutes = date.getMinutes().toString().padStart(2, '0');
-  
+
   // 如果是今天，只显示时间
   // if (date.toDateString() === now.toDateString()) {
   //   return `${hours}:${minutes}`;
@@ -87,7 +87,10 @@ const scrollToBottom = () => {
   });
 };
 
-const sendMessage = async () => {
+// 添加重试机制的 sendMessage 函数
+const sendMessage = async (retryCount = 0) => {
+  const maxRetries = 30; // 最大重试次数
+  
   if (!userInput.value.trim() || isLoading.value) return;
 
   // 添加用户消息
@@ -108,12 +111,29 @@ const sendMessage = async () => {
     console.log(userMessageContent);
     const response = await createAssessment({ question: userMessageContent });
     console.log(response);
-    messages.value.push({
-      role: 'assistant',
-      content: response.data,
-      time: new Date()
-    });
+    
+    // 检查响应是否成功
+    if (response && response.data) {
+      retryCount = 0;
+      messages.value.push({
+        role: 'assistant',
+        content: response.data,
+        time: new Date()
+      });
+    } else {
+      throw new Error('Invalid response');
+    }
   } catch (error) {
+    // 如果还有重试次数，则递归调用
+    if (retryCount < maxRetries) {
+      console.log(`请求失败，正在进行第 ${retryCount + 1} 次重试...`);
+      setTimeout(() => {
+        sendMessage(retryCount + 1);
+      }, 1000 * (retryCount + 1)); // 递增延迟重试
+      return; // 提前返回，避免执行 finally 块
+    }
+    
+    // 超过最大重试次数后显示错误信息
     messages.value.push({
       role: 'assistant',
       content: 'AI部署中，请稍后重新提问',
