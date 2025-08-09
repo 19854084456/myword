@@ -1,7 +1,8 @@
 import axios from "axios";
 import { message } from './message';
 const request = axios.create({
-  baseURL: 'http://106.53.77.170:3000', // 根据实际情况修改基础URL
+  baseURL: 'https:www.chennanfangapi.fun', // 根据实际情况修改基础URL
+  // baseURL: 'http://106.53.77.170:3000', // 根据实际情况修改基础URL
   timeout: 300000, 
   headers: {
     "Content-Type": "application/json"

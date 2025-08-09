@@ -4,6 +4,7 @@ import ProjectsPage from './../page/onlineResume/personalAdvantage.vue'
 import SmartNotes from './../page/smartNotes/index.vue'
 import AgentCreator from './../page/aiAgent/agentCreator.vue'
 import AgentChat from './../page/aiAgent/agentChat.vue'
+import AgentHome from './../page/aiAgent/agentHome.vue'
 const routes = [
   {
     path: '/',
@@ -51,6 +52,14 @@ const routes = [
     component: AgentChat,
     meta: {
       title: '智能助手'
+    }
+  },
+  {
+    path: '/agentHome',
+    name: 'agentHome',
+    component: AgentHome,
+    meta: {
+      title: '智能体'
     }
   },
 ]
