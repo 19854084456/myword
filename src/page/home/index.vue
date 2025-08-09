@@ -6,7 +6,8 @@
         <p class="animate-element">我专注于创建美观、高效、用户友好的网站与应用。拥有7年开发经验，擅长将复杂需求转化为优雅的解决方案。</p>
         <div class="btn-container animate-element">
           <router-link to="/projectsPage" class=" btn">在线简历查看</router-link>
-          <a href="https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/webchennanfang.docx" target="_blank" class="btn btn-outline">个人简历下载</a>
+          <a @click="handleNavClick('ai-chat')" target="_blank" class="btn btn-outline">智能AI客服</a>
+          <!-- <a href="https://nanfangchen.oss-cn-shenzhen.aliyuncs.com/webchennanfang.docx" target="_blank" class="btn btn-outline">个人简历下载</a> -->
         </div>
       </div>
       <div class="hero-image">
@@ -15,6 +16,13 @@
     </div>
   </section>
 </template>
+<script setup>
+const emit = defineEmits(['navigate'])
+// 处理导航点击
+const handleNavClick = (target) => {
+  emit('navigate', target)
+}
+</script>
 
 <style scoped>
 /* 默认桌面端样式 */

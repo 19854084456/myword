@@ -46,7 +46,7 @@ onBeforeUnmount(() => {
 
 <template>
     <Header @navigate="handleNavigate"></Header> 
-    <Home></Home>
+    <Home @navigate="handleNavigate"></Home>
     <About></About>
     <Project></Project>
     <Contact></Contact>
