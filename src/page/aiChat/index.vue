@@ -1,4 +1,3 @@
-<!-- src/page/aiChat/index.vue -->
 <template>
   <section id="ai-chat" class="ai-chat-section">
     <div class="container">
@@ -10,8 +9,20 @@
             :key="index" 
             :class="['message', message.role]"
           >
-            <div class="message-content">
-              {{ message.content }}
+            <div class="avatar" v-if="message.role === 'assistant'">
+              <img v-if="aiAvatar" :src="aiAvatar" alt="AI头像" class="avatar-img" />
+              <div v-else class="avatar-text">AI</div>
+            </div>
+            
+            <div class="message-content-wrapper">
+              <div class="message-content">
+                {{ message.content }}
+              </div>
+            </div>
+            
+            <div class="avatar" v-if="message.role === 'user'">
+              <img v-if="userAvatar" :src="userAvatar" alt="用户头像" class="avatar-img" />
+              <div v-else class="avatar-text">我</div>
             </div>
           </div>
         </div>
@@ -34,6 +45,9 @@
 <script setup>
 import { ref, nextTick } from 'vue';
 import { createAssessment} from '@/api/openAi';
+
+const aiAvatar = ref('https://q5.itc.cn/q_70/images03/20250226/e9bb1f7c545648d7895c499eed79c085.gif');
+const userAvatar = ref(null);
 
 const messages = ref([
   { role: 'assistant', content: '您好！我是南方智能AI客服，有什么我可以帮您的吗？' },
@@ -78,22 +92,6 @@ const sendMessage = async () => {
     scrollToBottom();
   }
 };
-
-// 模拟AI响应（实际使用时替换为真实API）
-const simulateAIResponse = (message) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const responses = [
-        `我理解您说的"${message}"。我是基于人工智能技术的助手，可以回答问题、提供信息和帮助解决问题。请问您具体需要什么帮助？`,
-        `感谢您的提问："${message}"。作为AI助手，我可以提供各种信息和帮助。请告诉我更多细节，以便我更好地为您服务。`,
-        `关于"${message}"，这是一个很有趣的问题。我可以为您提供相关信息，但需要您提供更多背景或具体需求。`,
-        `我已经收到您的消息："${message}"。我会尽力为您提供帮助，请稍等我整理相关信息。`,
-        `您好！针对"${message}"这个问题，我可以为您提供以下帮助：作为智能AI客服，我的功能包括回答问题、提供建议、协助处理信息等。`
-      ];
-      resolve(responses[Math.floor(Math.random() * responses.length)]);
-    }, 1000 + Math.random() * 2000);
-  });
-};
 </script>
 
 <style scoped>
@@ -134,24 +132,93 @@ const simulateAIResponse = (message) => {
 }
 
 .message {
-  max-width: 80%;
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: transparent;
+  color: #333;
+  border-bottom-left-radius: 0;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: transparent;
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+/* 头像样式 */
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+}
+
+/* AI头像背景色 */
+.message.assistant .avatar {
+  background-color: #17a2b8;
+}
+
+/* 用户头像背景色 */
+.message.user .avatar {
+  background-color: #007bff;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 文字头像样式 */
+.avatar-text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 消息内容包装器 */
+.message-content-wrapper {
+  max-width: calc(100% - 80px);
+}
+
+.message.assistant .message-content-wrapper {
+  margin-left: 0;
+}
+
+.message.user .message-content-wrapper {
+  margin-right: 0;
+}
+
+/* 消息内容样式 */
+.message-content {
+  max-width: 100%;
   padding: 12px 16px;
   border-radius: 18px;
   line-height: 1.5;
 }
 
-.message.user {
-  align-self: flex-end;
-  background-color: #007bff;
-  color: white;
-  border-bottom-right-radius: 4px;
-}
-
-.message.assistant {
-  align-self: flex-start;
+.message.assistant .message-content {
   background-color: #e9ecef;
   color: #333;
   border-bottom-left-radius: 4px;
+}
+
+.message.user .message-content {
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 4px;
 }
 
 .chat-input-container {
@@ -208,7 +275,20 @@ const simulateAIResponse = (message) => {
   }
   
   .message {
-    max-width: 90%;
+    max-width: 100%;
+  }
+  
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .avatar-text {
+    font-size: 14px;
+  }
+  
+  .message-content {
+    padding: 10px 12px;
   }
   
   .chat-input-container {
