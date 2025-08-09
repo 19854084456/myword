@@ -12,7 +12,7 @@
 
             <div class="message-content-wrapper">
               <div class="message-content" :class="{ 'messageContentRight': message.role === 'user' }">
-                {{ message.content }}{{ message.role }}
+                {{ message.content }}
               </div>
             </div>
 
