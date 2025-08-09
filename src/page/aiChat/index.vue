@@ -204,6 +204,7 @@ const sendMessage = async () => {
 /* 消息内容样式 */
 .message-content {
   max-width: 100%;
+  min-width: 260px;
   padding: 12px 16px;
   border-radius: 18px;
   line-height: 1.5;
