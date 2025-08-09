@@ -20,10 +20,10 @@
               </div>
             </div>
             
-            <div class="avatar" v-if="message.role === 'user'">
+            <!-- <div class="avatar" v-if="message.role === 'user'">
               <img v-if="userAvatar" :src="userAvatar" alt="用户头像" class="avatar-img" />
               <div v-else class="avatar-text">我</div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="chat-input-container">
