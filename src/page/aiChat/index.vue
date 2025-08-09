@@ -34,7 +34,7 @@
         <div class="chat-input-container">
           <input v-model="userInput" @keyup.enter="sendMessage" placeholder="请输入您的问题..." :disabled="isLoading" />
           <button @click="sendMessage" :disabled="isLoading || !userInput.trim()">
-            {{ isLoading ? 'AI思考中...' : '发送' }}{{ count }}
+            {{ isLoading ? 'AI思考中...' : '发送' }}
           </button>
         </div>
       </div>
@@ -125,7 +125,7 @@ const sendMessage = async () => {
   } catch (error) {
     count.value++;
     setTimeout(() => {
-      if (count.value < 10) {
+      if (count.value < 50) {
         sendMessage();
       } else {
         messages.value.push({
