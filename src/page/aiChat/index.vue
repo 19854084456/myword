@@ -23,7 +23,7 @@
             :disabled="isLoading"
           />
           <button @click="sendMessage" :disabled="isLoading || !userInput.trim()">
-            {{ isLoading ? '发送中...' : '发送' }}
+            {{ isLoading ? 'AI思考中...' : '发送' }}
           </button>
         </div>
       </div>

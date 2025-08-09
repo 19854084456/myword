@@ -92,11 +92,11 @@ animation-delay: 0.2s;
 }
 
 .hero-content p.animate-element {
-animation-delay: 1.6s;
+animation-delay: 1.2s;
 }
 
 .btn-container.animate-element {
-animation-delay: 3.6s;
+animation-delay: 2.6s;
 }
 
 @keyframes fadeInUp {
