@@ -5,12 +5,21 @@
       <div class="chat-container">
         <div class="chat-messages" ref="messagesContainer">
           <div v-for="(message, index) in messages" :key="index" :class="['message', message.role]">
+            <!-- AI消息 -->
             <div class="avatar" v-if="message.role === 'assistant'">
               <img v-if="aiAvatar" :src="aiAvatar" alt="AI头像" class="avatar-img" />
               <div v-else class="avatar-text">AI</div>
             </div>
 
             <div class="message-content-wrapper">
+              <div class="message-header" v-if="message.role === 'assistant'">
+                <div class="message-sender">AI客服</div>
+                <div class="message-time">{{ formatTime(message.time) }}</div>
+              </div>
+              <div class="message-header user-header" v-if="message.role === 'user'">
+                <div class="message-sender">我</div>
+                <div class="message-time">{{ formatTime(message.time) }}</div>
+              </div>
               <div class="message-content" :class="{ 'messageContentRight': message.role === 'user' }">
                 {{ message.content }}
               </div>
@@ -18,7 +27,7 @@
 
             <div class="avatar" v-if="message.role === 'user'">
               <img v-if="userAvatar" :src="userAvatar" alt="用户头像" class="avatar-img" />
-              <div v-else class="avatar-text">我</div>
+              <div v-else class="avatar-text">用户</div>
             </div>
           </div>
         </div>
@@ -41,13 +50,20 @@ const aiAvatar = ref('https://q5.itc.cn/q_70/images03/20250226/e9bb1f7c545648d78
 const userAvatar = ref(null);
 
 const messages = ref([
-  { role: 'assistant', content: '您好！我是南方智能AI客服，有什么我可以帮您的吗？' },
-  { role: 'assistant', content: '您可以对我进行提问，了解我简历个人信息' }
+  { role: 'assistant', content: '您好！我是南方智能AI客服，有什么我可以帮您的吗？', time: new Date() },
+  { role: 'assistant', content: '您可以对我进行提问，了解我简历个人信息', time: new Date() }
 ]);
 
 const userInput = ref('');
 const isLoading = ref(false);
 const messagesContainer = ref(null);
+
+// 格式化时间
+const formatTime = (time) => {
+  if (!time) return '';
+  const date = new Date(time);
+  return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+};
 
 const scrollToBottom = () => {
   nextTick(() => {
@@ -61,22 +77,33 @@ const sendMessage = async () => {
   if (!userInput.value.trim() || isLoading.value) return;
 
   // 添加用户消息
-  messages.value.push({ role: 'user', content: userInput.value });
-  const userMessage = userInput.value;
+  const userMessage = {
+    role: 'user',
+    content: userInput.value,
+    time: new Date()
+  };
+  messages.value.push(userMessage);
+  
+  const userMessageContent = userInput.value;
   userInput.value = '';
   isLoading.value = true;
 
   scrollToBottom();
 
   try {
-    console.log(userMessage);
-    const response = await createAssessment({ question: userMessage });
+    console.log(userMessageContent);
+    const response = await createAssessment({ question: userMessageContent });
     console.log(response);
-    messages.value.push({ role: 'assistant', content: response.data });
+    messages.value.push({
+      role: 'assistant',
+      content: response.data,
+      time: new Date()
+    });
   } catch (error) {
     messages.value.push({
       role: 'assistant',
-      content: 'AI部署中，请稍后重新提问'
+      content: 'AI部署中，请稍后重新提问',
+      time: new Date()
     });
   } finally {
     isLoading.value = false;
@@ -182,14 +209,48 @@ const sendMessage = async () => {
 /* 消息内容包装器 */
 .message-content-wrapper {
   max-width: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
 }
 
 .message.assistant .message-content-wrapper {
   margin-left: 0;
+  align-items: flex-start;
 }
 
 .message.user .message-content-wrapper {
   margin-right: 0;
+  align-items: flex-end;
+}
+
+/* 消息头部信息 */
+.message-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.user-header {
+  flex-direction: row-reverse;
+}
+
+.message-sender {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+.message-time {
+  font-size: 12px;
+}
+
+.message.assistant .message-sender {
+  color: #17a2b8;
+}
+
+.message.user .message-sender {
+  color: #007bff;
 }
 
 /* 消息内容样式 */
