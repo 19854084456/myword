@@ -85,7 +85,7 @@ const sendMessage = async () => {
   } catch (error) {
     messages.value.push({ 
       role: 'assistant', 
-      content: '抱歉，我遇到了一些问题，请稍后再试。' 
+      content: 'AI部署中，请稍后重新提问' 
     });
   } finally {
     isLoading.value = false;
